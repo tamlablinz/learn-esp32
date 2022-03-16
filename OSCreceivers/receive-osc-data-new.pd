@@ -1,0 +1,74 @@
+#N canvas 530 145 1388 701 24;
+#N canvas 0 94 581 563 oscparse-mobmuplat 0;
+#X obj 58 127 oscparse;
+#X obj 39 155 list tosymbol;
+#X obj 75 199 list split 1;
+#X obj 159 198 list;
+#X obj 133 314 int;
+#X obj 133 338 + 1;
+#X obj 125 291 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 125 378 5 0 0 0 - - -;
+#X msg 159 290 0;
+#X obj 59 398 list split 2;
+#X obj 35 437 list append;
+#X obj 75 224 sel 0;
+#X obj 99 245 t b f;
+#X obj 125 268 sel 47;
+#X text 190 40 1) look at bytes \, count number of 47 (/) befoer zero
+= N 2) split off first N items (the address components) from oscparse
+output \, keep the rest 3) use tosymbol to get unparse address \, prepend
+it to values.;
+#X obj 36 63 t l l l b, f 12;
+#X text 117 225 stop iterating on zero;
+#X text 161 378 how many elements the address was split into;
+#X text 130 156 gets address (symbol up until the null delimiter character)
+;
+#X obj 35 6 inlet;
+#X obj 35 499 outlet;
+#X obj 35 467 route list;
+#X connect 0 0 9 0;
+#X connect 1 0 10 0;
+#X connect 2 0 11 0;
+#X connect 2 1 3 1;
+#X connect 3 0 2 0;
+#X connect 4 0 5 0;
+#X connect 5 0 4 1;
+#X connect 5 0 7 0;
+#X connect 6 0 4 0;
+#X connect 7 0 9 1;
+#X connect 8 0 4 1;
+#X connect 9 1 10 1;
+#X connect 10 0 21 0;
+#X connect 11 1 12 0;
+#X connect 12 0 3 0;
+#X connect 12 1 13 0;
+#X connect 13 0 6 0;
+#X connect 15 0 1 0;
+#X connect 15 1 0 0;
+#X connect 15 2 2 0;
+#X connect 15 3 8 0;
+#X connect 19 0 15 0;
+#X connect 21 0 20 0;
+#X restore 274 140 pd oscparse-mobmuplat;
+#X floatatom 193 381 5 0 0 0 - - -;
+#X floatatom 322 382 5 0 0 0 - - -;
+#X text 393 24 port number;
+#X obj 191 427 vsl 15 128 0 200 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6286 1;
+#X obj 301 419 vsl 15 128 0 200 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6921 1;
+#X obj 263 83 print;
+#X obj 47 34 netreceive -u -b 44444;
+#X obj 47 240 route /esp;
+#X obj 234 282 unpack f f;
+#X obj 61 92 oscparse;
+#X obj 69 154 list trim;
+#X connect 1 0 4 0;
+#X connect 2 0 5 0;
+#X connect 7 0 10 0;
+#X connect 8 0 9 0;
+#X connect 9 0 1 0;
+#X connect 9 1 2 0;
+#X connect 10 0 11 0;
+#X connect 11 0 8 0;
