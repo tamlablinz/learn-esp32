@@ -1,0 +1,18 @@
+#N canvas 328 104 678 424 24;
+#X text 393 24 port number;
+#X obj 47 34 netreceive -u -b 44444;
+#X obj 47 92 oscparse;
+#X obj 47 154 list trim;
+#X obj 46 207 route sensors;
+#X text 254 209 OSC address without "/";
+#X floatatom 46 282 5 0 0 0 - - - 0;
+#X obj 155 289 unpack f f;
+#X floatatom 155 331 5 0 0 0 - - - 0;
+#X floatatom 295 330 5 0 0 0 - - - 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 4 0 7 0;
+#X connect 7 0 8 0;
+#X connect 7 1 9 0;
